@@ -11,8 +11,9 @@ app.get('/', function (req, res) {
 
 // Triggered by a new pull request
 app.post('/new-pr', function (req, res) {
+    var pr = req.body.pull_request;
     console.log(req.body);
-    var args = [req.body.base.repo.full_name, req.body.head.repo.full_name, req.body.pull_request.head.ref, req.body.number];
+    var args = [pr.base.repo.full_name, pr.head.repo.full_name, pr.head.ref, pr.number];
     console.log(args);
     
     res.send('OK');
