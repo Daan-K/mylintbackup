@@ -1,5 +1,3 @@
-package com.company;
-
 import java.io.File;
 import java.util.ArrayList;
 
@@ -21,7 +19,9 @@ public class lintRunner {
         } else if (s.equals("js")) {
             return jLinter.runLinter(filePath);
         }
-        throw new Exception("Extension Not Supported");
+        String[] toReturn = new String[1];
+	toReturn[0] = "";
+	return toReturn;
     }
 
     public String[][] runLint(String[] filePaths) throws Exception {
@@ -37,7 +37,7 @@ public class lintRunner {
         StringBuilder SB = new StringBuilder();
         int location = fileName.length()-1;
         char[] fileNameChar = fileName.toCharArray();
-        while(fileNameChar[location] != '.'){
+        while(fileNameChar[location] != '.' && location > 0){
             SB.append(fileNameChar[location]);
             location--;
         }
